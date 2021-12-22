@@ -1,25 +1,63 @@
 pipeline{
-    agent{
-        label "node"
+    agent any
+    tools{
+        nodejs "node"
     }
+    environment{
+        BUILD_VERSION = '0.0.0'
+    }
+
     stages{
-        stage("A"){
+        stage("Install dependencies"){
             steps{
-                echo "========executing A========"
-            }
-            post{
-                always{
-                    echo "========always========"
+                dir('Frontend'){
+                    sh "npm install" 
                 }
-                success{
-                    echo "========A executed successfully========"
-                }
-                failure{
-                    echo "========A execution failed========"
+
+                dir('Backend'){
+                    sh "npm install" 
                 }
             }
         }
+
+        stage("Testing"){
+            steps{
+                dir('Frontend'){
+                    sh "npm test" 
+                }
+
+                dir('Backend'){
+                    sh "npm test" 
+                }
+            }
+        }
+
+        stage("Docker Login"){
+            steps{
+                withCredentials([
+                    usernamePassword(credentials: 'Dockerhub-credentials', usernameVariable: USER, passwordVariable: PWD)
+                ]) {
+                    sh "docker login -u ${USER} -p ${PWD}"
+                }
+            }
+        }
+
+        stage("Install dependencies"){
+            steps{
+                dir('Frontend'){
+                    sh "docker build -t nim-nambi/Frontend:${BUILD_VERSION} ."
+                    sh "docker push nim-nambi/Frontend:${BUILD_VERSION}" 
+                }
+
+                dir('Backend'){
+                    sh "docker build -t nim-nambi/Backend:${BUILD_VERSION} ." 
+                    sh "docker push nim-nambi/Backend:${BUILD_VERSION}"
+                }
+            }
+        }
+
     }
+
     post{
         always{
             echo "========always========"
