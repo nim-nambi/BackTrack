@@ -56,6 +56,29 @@ pipeline{
             }
         }
 
+        stage("Clone Infrastructure Repo"){
+            steps{
+                git url: 'https://github.com/nim-nambi/AWS_IAC.git'
+            }
+        }
+
+        stage("Build and configure EC2 instances"){
+            steps{
+                dir('Terraform_scripts'){
+                    sh "terraform validate"
+                    sh "terraform apply"
+                }
+            }
+        }
+
+        stage("Deploy pods"){
+            steps{
+                dir('Ansible'){
+                    sh "ansible-playbook apply.yml"
+                }
+            }
+        }
+
     }
 
     post{
