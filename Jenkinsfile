@@ -42,7 +42,7 @@ pipeline{
             }
         }
 
-        stage("Install dependencies"){
+        stage("Docker Build"){
             steps{
                 dir('Frontend'){
                     sh "docker build -t nim-nambi/Frontend:${BUILD_VERSION} ."
