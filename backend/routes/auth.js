@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const passwordUtils = require("../auth/passwordUtils");
 const passport = require("passport");
-const opDB = require("../backend/db/OpTaskDB");
+const opDB = require("../db/OpTaskDB");
 
 // handles login requests
 router.post("/login", function (req, res, next) {

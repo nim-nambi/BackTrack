@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const opDB = require("../backend/db/OpTaskDB");
+const opDB = require("../db/OpTaskDB");
 
 // get all of the users projects
 router.get("/:id", async (req, res) => {
