@@ -1,0 +1,124 @@
+.colorDesign {
+  color: #005252;
+}
+
+.footer-p {
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+
+        
+
+a:link {
+  text-decoration: none;
+}
+
+    
+
+.button {
+  display: inline-block;
+  font-family: "Montserrat", Helvetica, sans-serif;
+  /* Button is responsive to font size.*/  
+  font-size: 13px;
+  -webkit-font-smoothing: antialiased;
+  position: relative;
+  padding: 0.8em 1.5em;
+  border: none;
+  color: white;
+  transition: 0.2s;
+  text-decoration: none;
+  border: white solid 1px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+    /* Setting opacity so button isn't so bright.  Could use a filter. */  
+   opacity: 0.95;
+/* Setting right padding for button 
+to push text away from the icon which is
+positioned as absolute to enable animations. 
+No need to declare button max/min width as button
+is responsive to font size.
+*/  
+   padding-right: 2.5em;
+  cursor: pointer;
+  
+}
+.button:before,
+.button:after {
+  position: absolute;
+  padding-top: inherit;
+  padding-bottom: inherit;
+  font-size: inherit;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 2.8em;
+  transition: 0.2s;
+  transform-origin: 50% 60%;
+  
+  /*  Uncomment below to set icon background color.  Set as black 
+in example with RGB opacity to  make it stand out a bit more.   */
+  
+  /*  background: rgba(0,0,0,0.10); */
+ 
+}
+
+
+
+/* Phone Button Markup  */
+
+.phone {
+  background: #333;
+}
+.phone:hover {
+  background: #111;
+}
+.phone:active,
+.phone:focus {
+  background: #3c3b6e;
+}
+
+/* Entity Icon   */
+.phone:after {
+  content: "\260E";
+}
+/* Set Phone Icon Wiggle Animation   */
+.phone:hover:after {
+  -webkit-animation: wiggle 0.05s alternate ease infinite;
+  animation: wiggle 0.05s alternate ease infinite;
+}
+
+/* Animations  */
+
+@-webkit-keyframes bounceright {
+  from {
+    -webkit-transform: translateX(0);
+  }
+  to {
+    -webkit-transform: translateX(3px);
+  }
+}
+@-webkit-keyframes wiggle {
+  from {
+    -webkit-transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(30deg);
+  }
+}
+@keyframes bounceright {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(3px);
+  }
+}
+@keyframes wiggle {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(30deg);
+  }
+}
+
