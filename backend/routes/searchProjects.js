@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const opDB = require("../backend/db/OpTaskDB");
+const opDB = require("../db/OpTaskDB");
 
 router.get("/:userid/:query/page/:page", async (req, res) => {
   const queryResults = await opDB.searchAndGetProjects(
