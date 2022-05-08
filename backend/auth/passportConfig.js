@@ -1,6 +1,6 @@
 const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
-const opDB = require("../backend/db/OpTaskDB");
+const opDB = require("../db/OpTaskDB");
 const passwordUtils = require("./passwordUtils");
 
 const customFields = {

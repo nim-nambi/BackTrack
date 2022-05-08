@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const opDB = require("../backend/db/OpTaskDB");
+const opDB = require("../db/OpTaskDB");
 
 router.get("/:id", async function (req, res) {
   const result = await opDB.getUserById(req.params.id);
