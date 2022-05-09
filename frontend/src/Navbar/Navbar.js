@@ -1,7 +1,7 @@
 import "./Navbar.css";
 import { useState } from "react";
 import { Redirect, Link } from "react-router-dom";
-import NavLogo from "../Images/NavLogo.png";
+import NavLogo from "../Images/newlogo.png";
 import PropTypes from "prop-types";
 
 function Navbar(props) {
@@ -26,7 +26,7 @@ function Navbar(props) {
             className="me-1"
             style={{ width: "35px", height: "35px" }}
           />
-          OpTask
+          Backtrack
         </Link>
         <button
           className="navbar-toggler position-absolute d-md-none collapsed"
