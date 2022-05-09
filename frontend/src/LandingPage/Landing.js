@@ -1,6 +1,6 @@
 import "./Landing.css";
 import Footer from "../Footer/Footer.js";
-import LogoImage from "../Images/TinyLogo.png";
+import LogoImage from "../Images/newlogo.png";
 import CheckIcon from "../Images/checklist.png";
 import ComputerWoman from "../Images/computerWoman.png";
 import WorkFlow from "../Images/bookkeeping.png";
@@ -16,11 +16,11 @@ const Landing = () => {
           <img
             src={LogoImage}
             alt="OpTask Logo"
-            style={{ height: "70px", width: "70px" }}
+            style={{ height: "60px", width: "60px" }}
           />
-          <h3 className="navbar-nav linkText" href="/">
+          <h2 className="navbar-nav linkText" href="/">
             Backtrack
-          </h3>
+          </h2>
           <button
             className="navbar-toggler button-color"
             type="button"

@@ -11,6 +11,8 @@ import { toast } from "react-toastify";
 import Footer from "../Footer/Footer.js";
 import "./Dashboard.css";
 import PropTypes from "prop-types";
+import Charts from "../components/Charts";
+
 
 //intialize the material ui styles with their hook
 const useStyles = makeStyles((theme) => ({
@@ -334,6 +336,8 @@ function Dashboard(props) {
               <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                 <h1 className="h2 dashTitle">Dashboard</h1>
               </div>
+              <div className="chart"> <Charts/></div>
+              
               <div className="row row-cols-1 row-cols-md-2 g-4">
                 {isDataLoading && (
                   <div className="container">
@@ -343,7 +347,7 @@ function Dashboard(props) {
                       height={500}
                       width={500}
                     />
-                  </div>
+                   </div>
                 )}
                 {userProjects.map((project) => {
                   return (
@@ -352,6 +356,7 @@ function Dashboard(props) {
                       className="projectLink"
                       to={"/projects/" + project._id}
                     >
+                      
                       <ProjectCard
                         key={project._id}
                         name={project.projectName}
@@ -379,6 +384,7 @@ function Dashboard(props) {
                   />
                 </div>
               </div>
+
               <Footer />
             </main>
           </div>

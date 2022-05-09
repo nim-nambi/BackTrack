@@ -8,6 +8,11 @@ body {
   vertical-align: text-bottom;
 }
 
+.chart{
+  padding: auto;
+  margin-bottom: auto;
+}
+
 /*
  * Sidebar
  */
