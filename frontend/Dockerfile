@@ -1,28 +1,15 @@
-FROM node:12-alpine as builder
+FROM node:13.12.0-alpine as build
 WORKDIR /app
-COPY package*.json /app
-RUN npm install
-COPY . /app
+ENV PATH /app/node_modules/.bin:$PATH
+COPY package.json ./
+COPY package-lock.json ./
+RUN npm ci --silent
+RUN npm install react-scripts@3.4.1 -g --silent
+COPY . ./
 RUN npm run build
 
-FROM nginx:alpine
-# ----------------------------------
-
-# Clean nginx
-RUN rm -rf /usr/share/nginx/html/*
-
-# Copy dist
-COPY --from=builder /app/dist /usr/share/nginx/html
-COPY ./nginx.conf /etc/nginx/default.conf
-
-WORKDIR /usr/share/nginx/html
-
-# Permission
-RUN chown root /usr/share/nginx/html/*
-RUN chmod 755 /usr/share/nginx/html/*
-
-# Expose port
-EXPOSE 4200
-
-# Start
+# production environment
+FROM nginx:stable-alpine
+COPY --from=build /app/build /usr/share/nginx/html
+EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]
