@@ -2,12 +2,14 @@ FROM node:13-alpine
 
 WORKDIR /app
 
-COPY package.json package-lock.json ./
+COPY package.json ./
+COPY package-lock.json ./
 
-RUN npm install --production
+RUN npm install 
 
 COPY . .
 
-EXPOSE 3000
+EXPOSE 3003
 
-CMD node index.js
+CMD [ "npm" , "start" ]
+
